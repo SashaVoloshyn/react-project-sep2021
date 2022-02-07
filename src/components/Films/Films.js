@@ -17,7 +17,7 @@ const Films = () => {
 
     return (
         <div>
-            {/*{results.map(film=><FilmCard film={film} key={film.id}/>)}*/}
+            {films.map(film=><FilmCard film={film} key={film.id}/>)}
         </div>
     );
 };

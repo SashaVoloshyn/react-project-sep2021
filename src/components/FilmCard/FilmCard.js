@@ -3,7 +3,7 @@ import React from 'react';
 const FilmCard = ({film}) => {
     return (
         <div>
-            {film.id}
+            {film.original_title}
 
         </div>
     );
