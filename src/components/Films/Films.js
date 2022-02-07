@@ -1,12 +1,15 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
-import {getAllFilms} from "../../store/slices/filmSlice";
 import {FilmCard} from "../FilmCard/FilmCard";
+import {getAllFilms} from "../../store";
 
 const Films = () => {
-    const dispatch = useDispatch();
     const {films} = useSelector(state => state.filmsRed);
+    const dispatch = useDispatch();
+    console.log(films)
+
+
 
     useEffect(()=>{
         dispatch(getAllFilms())
@@ -14,7 +17,7 @@ const Films = () => {
 
     return (
         <div>
-            {console.log(films)}
+            {/*{results.map(film=><FilmCard film={film} key={film.id}/>)}*/}
         </div>
     );
 };

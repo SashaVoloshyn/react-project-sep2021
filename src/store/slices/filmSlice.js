@@ -9,38 +9,39 @@ const initialState={
     error:null
 }
 
-export const getAllFilms = createAsyncThunk(
-    'filmSlice/getAllFilms',
-    async (_, {dispatch,rejectWithValue}) => {
-        try {
-            return await filmService.getAll()
-        } catch (error) {
-            return rejectWithValue(error.response.data)
-        }
-    }
-)
+// export const getAllFilms = createAsyncThunk(
+//     'filmSlice/getAllFilms',
+//     async (_, {dispatch,rejectWithValue}) => {
+//         try {
+//             return await filmService.getAll()
+//
+//         } catch (error) {
+//             return rejectWithValue(error.response.data)
+//         }
+//     }
+// )
 
 const filmSlice = createSlice({
     name: 'filmSlice',
     initialState,
-    extraReducers: {
-        [getAllFilms.pending]: (state) => {
-            state.status = 'pending'
-            state.error = null
-        },
-        [getAllFilms.fulfilled]: (state, action) => {
-            state.films = action.payload
-        },
-        [getAllFilms.rejected]: (state, action) => {
-            state.error = action.payload
-        },
-    }
+    reducers:{
+        getAllFilms:(state, action) => {
+            state.films = action.payload;
+        }
 
-});
+    },
+
+    extraReducers: {
+        // [getAllFilms.fulfilled]: (state, action) => {
+        //     state.films = action.payload
+        //     console.log(state.films);
+        // }
+}
+})
+
 
 const filmReducer = filmSlice.reducer;
 
 
-
-
+export const {getAllFilms} = filmSlice.actions;
 export default filmReducer;
