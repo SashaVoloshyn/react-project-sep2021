@@ -1,19 +1,20 @@
-import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 import {movieService} from "../../services/movie.service";
 
 
-const initialState={
-    id:0,
+const initialState = {
+    id: 0,
     movies: [],
-    status:null,
-    error:null
+    movie: null,
+    status: null,
+    error: null
 }
-export  const getAllMovies =createAsyncThunk(
+export const getAllMovies = createAsyncThunk(
     'movieSlice/getAllMovies',
-    async (_, {dispatch,rejectWithValue}) => {
+    async (_, {dispatch, rejectWithValue}) => {
         try {
-            return  await movieService.getAll();
+            return await movieService.getAll();
 
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -21,35 +22,37 @@ export  const getAllMovies =createAsyncThunk(
     }
 );
 
-export const getMovieDetails=createAsyncThunk(
+export const getMovieDetails = createAsyncThunk(
     'movieSlice/getMovieDetails',
-    async (movieId,{dispatch})=>{
+    async (movieId, {dispatch, rejectWithValue}) => {
         try {
-            return   await movieService.getMovie(movieId)
+            return  await movieService.getMovie(movieId)
 
 
-
-        } catch (error){
+        } catch (error) {
+            return rejectWithValue(error.response.data)
         }
     }
 )
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers:{
+    reducers: {},
 
-    },
-
-    extraReducers:{
+    extraReducers: {
         [getAllMovies.fulfilled]: (state, action) => {
             state.movies = action.payload
-            console.log('alll',state.movies)
+            console.log(state)
+            console.log(action)
 
         },
-        [getMovieDetails.fulfilled]:(state,action)=>{
-            state.movies.push(action.payload);
-            console.log('solo',state.movies)
-
+        [getMovieDetails.pending]: (state) => {
+            state.status = 'loading'
+            state.error = null
+        },
+        [getMovieDetails.fulfilled]: (state, action) => {
+            state.movie = action.payload;
+            state.status = 'good';
 
         }
 
