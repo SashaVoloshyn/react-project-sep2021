@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-
 import {useParams} from "react-router";
+
 import {getMovieDetails} from "../../store";
 
 const MovieDetailsPage = () => {
@@ -22,7 +22,7 @@ const MovieDetailsPage = () => {
         // console.log(videos);
         return (
             <div>
-
+                <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title}/>
                 <iframe width="330" height="200"
                         src={`https://www.youtube.com/embed/${videos}`}
                         frameBorder="0"
