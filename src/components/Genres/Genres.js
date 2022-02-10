@@ -16,7 +16,7 @@ const Genres = () => {
 
     return (
         <div>
-            {genres.map(genre => <h2 key={genre.id}><Link to={`/genres=${genre.id}/${genre.name}`}>{genre.name}</Link></h2>)}
+            {genres && genres.map(genre => <h2 key={genre.id}><Link to={`/genres=${genre.id}/${genre.name}`}>{genre.name}</Link></h2>)}
         </div>
     );
 };

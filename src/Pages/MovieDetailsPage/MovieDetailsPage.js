@@ -12,9 +12,10 @@ const MovieDetailsPage = () => {
     useEffect(() => {
 
         dispatch(getMovieDetails(movieId));
+
     }, []);
-    console.log('status-------',status);
-    console.log('movie------',movie);
+    console.log(status);
+
     if (status === 'movie-resolved') {
 
         const videos = movie.videos.results[0].key;
@@ -24,13 +25,14 @@ const MovieDetailsPage = () => {
                 {movie.genres.map(ganre=><h2 key={ganre.id}>{ganre.name}</h2>)}
                 <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title}/>
                 <iframe width="800" height="600"
-                        src={`https://www.youtube.com/embed/${videos}`}
+                            src={`https://www.youtube.com/embed/${videos}`}
                         frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen>
                 </iframe>
             </div>
         );
+
         // adult: false
         // backdrop_path: "/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"
         // belongs_to_collection: {id: 531241, name: "Spider-Man (Avengers) Collection", poster_path: "/nogV4th2P5QWYvQIMiWHj4CFLU9.jpg",…}
@@ -58,8 +60,6 @@ const MovieDetailsPage = () => {
         // videos: {results: [,…]}
         // vote_average: 8.4
         // vote_count: 7372
-
-
     }
 
     return (

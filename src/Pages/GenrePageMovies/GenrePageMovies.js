@@ -9,25 +9,23 @@ const GenrePageMovies = () => {
     const {genreMovies,status} = useSelector(state => state.genresRed);
     const {genreId} = useParams();
     const dispatch = useDispatch();
-    console.log(genreId);
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getGenreMovies(genreId));
-    },[])
+    }, []);
     console.log(status);
 
-    if (status==='good') {
+
         return (
             <div>
-                {genreMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+                {genreMovies && genreMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
             </div>
         );
-    }
-    return (
-        <div>
-            <h1>errrrrrrrrorrrrrrrrrrrrrrrrrr</h1>
-        </div>
-    );
+    // return (
+    //     <div>
+    //         <h1>errrrrrrrrorrrrrrrrrrrrrrrrrr</h1>
+    //     </div>
+    // );
 };
 
 export  {GenrePageMovies};

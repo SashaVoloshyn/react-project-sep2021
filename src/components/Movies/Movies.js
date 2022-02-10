@@ -20,7 +20,7 @@ const Movies = () => {
 
     return (
         <div>
-            {movies.map(movie=><MovieCard movie={movie} key={movie.id}/>)}
+            {movies && movies.map(movie=><MovieCard movie={movie} key={movie.id}/>)}
         </div>
     );
 };
