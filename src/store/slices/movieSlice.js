@@ -11,7 +11,7 @@ const initialState = {
 }
 export const getAllMovies = createAsyncThunk(
     'movieSlice/getAllMovies',
-    async (_, {dispatch, rejectWithValue}) => {
+    async (_, { rejectWithValue}) => {
         try {
             return await movieService.getAll();
 
@@ -23,7 +23,7 @@ export const getAllMovies = createAsyncThunk(
 
 export const getMovieDetails = createAsyncThunk(
     'movieSlice/getMovieDetails',
-    async (movieId, {dispatch, rejectWithValue}) => {
+    async (movieId, { rejectWithValue}) => {
         try {
             return await movieService.getMovie(movieId);
 
@@ -61,8 +61,9 @@ const movieSlice = createSlice({
 
         },
         [getAllMovies.fulfilled]: (state, action) => {
-            state.movies = action.payload;
+            state.movies = action.payload.results;
             state.status = 'resolved';
+            console.log(state.movies)
 
         },
         [getAllMovies.rejected]: (state, action) => {

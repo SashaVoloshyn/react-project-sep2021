@@ -7,11 +7,14 @@ import {getAllMovies} from "../../store";
 const Movies = () => {
     const {movies} = useSelector(state=> state.moviesRed);
     const dispatch = useDispatch();
+    console.log('films============',movies);
+
 
 
 
     useEffect(()=>{
         dispatch(getAllMovies())
+
     },[])
 
 

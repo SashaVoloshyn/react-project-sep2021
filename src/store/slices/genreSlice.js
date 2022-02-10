@@ -11,7 +11,7 @@ const initialState = {
 };
 export const getAllGenres = createAsyncThunk(
     'genreSlice/getAllGenres',
-    async (_, {dispatch, rejectWithValue}) => {
+    async (_, { rejectWithValue}) => {
         try {
             return await genreService.getAll();
 
@@ -22,7 +22,7 @@ export const getAllGenres = createAsyncThunk(
 );
 export const getGenreMovies = createAsyncThunk(
     'genreSlice/getGenreMovies',
-    async (genreId, {dispatch, rejectWithValue}) => {
+    async (genreId, { rejectWithValue}) => {
         try {
             return await genreService.getGenreMovies(genreId);
 
@@ -60,7 +60,7 @@ const genreSlice = createSlice({
 
         },
         [getGenreMovies.fulfilled]: (state, action) => {
-            state.genreMovies = action.payload;
+            state.genreMovies = action.payload.results;
             state.status = 'good';
             console.log('sssssssssss',state.genreMovies);
 
