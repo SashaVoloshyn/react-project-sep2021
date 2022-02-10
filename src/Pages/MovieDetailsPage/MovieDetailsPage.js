@@ -16,14 +16,15 @@ const MovieDetailsPage = () => {
     }, []);
     console.log('status-------',status);
     console.log('movie------',movie);
-    if (status === 'good') {
+    if (status === 'resolved') {
 
         const videos = movie.videos.results[0].key;
         // console.log(videos);
         return (
             <div>
+                {movie.genres.map(ganre=><h2 key={ganre.id}>{ganre.name}</h2>)}
                 <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title}/>
-                <iframe width="330" height="200"
+                <iframe width="800" height="600"
                         src={`https://www.youtube.com/embed/${videos}`}
                         frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
