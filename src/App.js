@@ -1,28 +1,27 @@
 import {Route, Routes, Navigate} from "react-router-dom";
 
 
-
 import './App.css';
 import {Layout} from "./components";
-import {MovieDetailsPage, MoviesPage} from "./Pages";
+import {GenrePageMovies, MovieDetailsPage, MoviesPage} from "./Pages";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path={'/'} element={<Layout/>}>
-          <Route index element={<Navigate to={'movies'}/>}/>
+    return (
+        <div className="App">
+            <Routes>
+                <Route path={'/'} element={<Layout/>}>
+                    <Route index element={<Navigate to={'/movies'}/>}/>
 
-          <Route path={'/movies'} element={<MoviesPage/>}/>
-          <Route path={'movies/:movieId'} element={<MovieDetailsPage/>}/>
+                    <Route path={'movies'} element={<MoviesPage/>}/>
+                    <Route path={'movies/:movieId/:name'} element={<MovieDetailsPage/>}/>
+                    <Route path={'genres=:genreId/:name'} element={<GenrePageMovies/>}/>
 
 
+                </Route>
+            </Routes>
 
-        </Route>
-      </Routes>
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;

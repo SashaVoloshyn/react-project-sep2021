@@ -9,14 +9,13 @@ const MovieDetailsPage = () => {
     const dispatch = useDispatch();
     const {status,movie} = useSelector(state => state.moviesRed);
 
-
-
     useEffect(() => {
+
         dispatch(getMovieDetails(movieId));
     }, []);
     console.log('status-------',status);
     console.log('movie------',movie);
-    if (status === 'resolved') {
+    if (status === 'movie-resolved') {
 
         const videos = movie.videos.results[0].key;
         // console.log(videos);
@@ -65,7 +64,7 @@ const MovieDetailsPage = () => {
 
     return (
         <div>
-            {/*<video src={`https://www.youtube.com/watch?v=${videos}`}></video>*/}
+            <h1>wtf</h1>
         </div>
     );
 };

@@ -44,8 +44,8 @@ const movieSlice = createSlice({
 
         },
         [getMovieDetails.fulfilled]: (state, action) => {
-            state.movie = action.payload;
-            state.status = 'resolved';
+            state.movie = action.payload ;
+            state.status = 'movie-resolved';
 
         },
         [getMovieDetails.rejected]: (state, action) => {
