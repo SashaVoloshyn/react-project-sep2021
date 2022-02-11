@@ -7,13 +7,17 @@ const initialState = {
     movies: [],
     movie: null,
     status: null,
-    error: null
+    error: null,
+    currentPage: 1,
+    perPage: 10,
+    totalCount: 1,
+    data: null
 }
 export const getAllMovies = createAsyncThunk(
     'movieSlice/getAllMovies',
-    async (_, { rejectWithValue}) => {
+    async (currentPage, {rejectWithValue}) => {
         try {
-            return await movieService.getAll();
+            return await movieService.getAll(currentPage);
 
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -21,9 +25,10 @@ export const getAllMovies = createAsyncThunk(
     }
 );
 
+
 export const getMovieDetails = createAsyncThunk(
     'movieSlice/getMovieDetails',
-    async (movieId, { rejectWithValue}) => {
+    async (movieId, {rejectWithValue}) => {
         try {
             return await movieService.getMovie(movieId);
 
@@ -32,10 +37,19 @@ export const getMovieDetails = createAsyncThunk(
         }
     }
 );
+
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        pagination: (state, action) => {
+            state.currentPage = action.payload.page;
+            console.log(state.currentPage);
+            console.log(action.payload);
+
+        }
+    },
 
     extraReducers: {
         [getMovieDetails.pending]: (state) => {
@@ -44,7 +58,7 @@ const movieSlice = createSlice({
 
         },
         [getMovieDetails.fulfilled]: (state, action) => {
-            state.movie = action.payload ;
+            state.movie = action.payload;
             state.status = 'movie-resolved';
 
         },
@@ -62,8 +76,12 @@ const movieSlice = createSlice({
         },
         [getAllMovies.fulfilled]: (state, action) => {
             state.movies = action.payload.results;
+            state.data = action.payload;
+            state.totalCount=action.payload.total_pages
             state.status = 'resolved';
-            console.log(state.movies)
+            console.log(state.data);
+            console.log(state.totalCount);
+
 
         },
         [getAllMovies.rejected]: (state, action) => {
@@ -73,12 +91,15 @@ const movieSlice = createSlice({
         },
 
 
-
     }
 })
 
 
 const movieReducer = movieSlice.reducer;
 
+const {pagination} = movieSlice.actions;
+
+
 
 export default movieReducer;
+export const movieActions = {pagination}

@@ -1,27 +1,40 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
+
 import {MovieCard} from "../MovieCard/MovieCard";
-import {getAllMovies} from "../../store";
+import {getAllMovies, movieActions} from "../../store";
+import css from "./Movies.module.css";
+import {createPages} from "../func";
+
+
 
 const Movies = () => {
-    const {movies} = useSelector(state=> state.moviesRed);
+    const {movies, data, currentPage,totalCount} = useSelector(state => state.moviesRed);
     const dispatch = useDispatch();
-    console.log('films============',movies);
+    let pages = [];
 
 
+    createPages(pages,totalCount,currentPage)
 
 
-    useEffect(()=>{
-        dispatch(getAllMovies())
+    useEffect(() => {
 
-    },[])
+        dispatch(getAllMovies(currentPage))
 
+
+    }, [currentPage])
 
     return (
         <div>
-            {movies && movies.map(movie=><MovieCard movie={movie} key={movie.id}/>)}
+            {movies && movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
+            <div className={css.pages}>{pages.map((page, index) => <span className={css.page} key={index}
+                                                                         onClick={() => dispatch(movieActions.pagination({page}))}
+
+            >{page}</span>)}</div>
+
         </div>
+
     );
 };
 
