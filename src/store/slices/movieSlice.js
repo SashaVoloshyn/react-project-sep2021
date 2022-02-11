@@ -8,7 +8,7 @@ const initialState = {
     movie: null,
     status: null,
     error: null,
-    currentPage: 1,
+    currentPage: 470,
     perPage: 10,
     totalCount: 1,
     data: null
