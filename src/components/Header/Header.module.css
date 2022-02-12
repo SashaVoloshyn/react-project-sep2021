@@ -1,8 +1,9 @@
 .header {
-    background-color: rgba(163, 161, 161, 0.89);
+    background-color: rgba(163, 161, 161, 0.91);
     position: fixed;
     width: 100%;
     box-shadow: 2px 1px 20px #030303;
+    z-index: 4;
 
 
 }
