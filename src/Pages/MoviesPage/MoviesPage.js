@@ -6,7 +6,7 @@ import {Genres, Movies} from "../../components";
 const MoviesPage = () => {
     return (
         <div className={css.movies}>
-            <h1>Movies</h1>
+            <h1 className={css.аnimTxt}>Movies</h1>
             <div className={css.moviesCont}>
                 <Genres/>
                 <Movies/>

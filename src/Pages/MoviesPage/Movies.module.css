@@ -14,3 +14,27 @@ h1 {
     justify-content: space-between;
 
 }
+.аnimTxt {
+    -webkit-animation: glow linear 2s infinite;
+    animation: glow linear 10s infinite;
+}
+
+
+
+@keyframes glow {
+    0% {
+        color: #000000;
+    }
+    25% {
+        color: #01086f;
+    }
+    50% {
+        color: #ffffff;
+    }
+    75% {
+        color: #ffffff;
+    }
+    100% {
+        color: #010542;
+    }
+}

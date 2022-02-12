@@ -1,5 +1,5 @@
 .header {
-    background-color: rgba(163, 161, 161, 0.91);
+    background-color: rgba(163, 161, 161, 0.89);
     position: fixed;
     width: 100%;
     box-shadow: 2px 1px 20px #030303;
@@ -61,9 +61,9 @@
     text-shadow: 2px 2px 10px #2f00ff;
 }
 
-.logoAnim {
+.аnimTxt {
     -webkit-animation: glow linear 2s infinite;
-    animation: glow linear 6s infinite;
+    animation: glow linear 10s infinite;
 }
 
 
@@ -76,12 +76,12 @@
         color: #01086f;
     }
     50% {
-        color: #a3a3a3;
+        color: #ffffff;
     }
     75% {
         color: #ffffff;
     }
     100% {
-        color: #01086f;
+        color: #010542;
     }
 }

@@ -1,7 +1,7 @@
 .genres {
     background-color: rgba(64, 64, 64, 0.95);
     height: fit-content;
-    width: 700px;
+    min-width: 15%;
     border-radius: 15px;
     display: flex;
     flex-direction: column;

@@ -11,7 +11,7 @@ const Header = () => {
                     <div className={css.logo}>
 
                         <img src='https://img.icons8.com/dotty/60/000000/circled-i.png' alt="logo"/>
-                        <h2 className={css.logoAnim}>I Logo</h2>
+                        <h2 className={css.аnimTxt}>I Logo</h2>
                     </div>
                     <div className={css.nav}>
                         <Link to={'/'}> <span>Movies</span></Link>
