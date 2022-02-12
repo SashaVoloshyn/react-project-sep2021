@@ -1,0 +1,16 @@
+h1 {
+    font-size: 40px;
+}
+.movies {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.moviesCont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}

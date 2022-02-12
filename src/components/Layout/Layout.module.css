@@ -1,3 +1,17 @@
 .wraper {
+    margin: 600px auto auto auto;
+    width: 1400px;
+    border: 2px solid rgba(163, 161, 161, 0.84);
+    border-radius: 20px;
+    padding: 15px;
+    background-color: rgba(193, 192, 192, 0.91);
 
 }
+.layout {
+    background-image: url('/public/img/fon2.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: rgb(3, 3, 3);
+
+}
+

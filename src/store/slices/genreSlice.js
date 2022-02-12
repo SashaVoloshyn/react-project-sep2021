@@ -76,6 +76,7 @@ const genreSlice = createSlice({
             state.totalCount = action.payload.total_pages;
             state.status = 'good';
             console.log(state.totalCount);
+            console.log(action.payload);
 
 
         },

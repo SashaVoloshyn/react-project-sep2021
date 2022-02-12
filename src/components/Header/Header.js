@@ -9,17 +9,19 @@ const Header = () => {
             <div className={css.header_wrap}>
                 <div className={css.header_nav}>
                     <div className={css.logo}>
-                        <img  src='https://img.icons8.com/dotty/60/000000/circled-i.png' alt="logo"/>
+
+                        <img src='https://img.icons8.com/dotty/60/000000/circled-i.png' alt="logo"/>
+                        <h2 className={css.logoAnim}>I Logo</h2>
                     </div>
                     <div className={css.nav}>
-                        <Link to={'/movies'}> <span>Movies</span></Link>
-                       <Link to={'#'}> <span>TOP-Movies</span> </Link>
+                        <Link to={'/'}> <span>Movies</span></Link>
+                        <Link to={'#'}> <span>TOP-Movies</span> </Link>
 
                     </div>
-
                 </div>
+
                 <div className={css.header_auth}>
-                    <img src="https://img.icons8.com/color/40/000000/my-melody.png"/>
+                    <img src="https://img.icons8.com/color/40/000000/my-melody.png" alt='user'/>
                     <span>User</span>
 
                 </div>
