@@ -7,7 +7,9 @@ const initialState = {
     genreMovies:[],
     genres: [],
     status: null,
-    error: null
+    error: null,
+    currentPage: 1,
+    totalCount: 1,
 };
 export const getAllGenres = createAsyncThunk(
     'genreSlice/getAllGenres',
@@ -20,11 +22,13 @@ export const getAllGenres = createAsyncThunk(
         }
     }
 );
+
+
 export const getGenreMovies = createAsyncThunk(
     'genreSlice/getGenreMovies',
-    async (genreId, { rejectWithValue}) => {
+    async ({genreId,currentPage}, { rejectWithValue}) => {
         try {
-            return await genreService.getGenreMovies(genreId);
+            return await genreService.getGenreMovies(genreId, currentPage);
 
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -36,6 +40,14 @@ export const getGenreMovies = createAsyncThunk(
 const genreSlice = createSlice({
     name : 'genreSlice',
     initialState,
+    reducers:{
+        pagination: (state, action) => {
+            state.currentPage = action.payload.page;
+            console.log(state.currentPage);
+            console.log(action.payload);
+        }
+
+    },
     extraReducers:{
         [getAllGenres.pending]: (state) => {
             state.status = 'loading';
@@ -61,8 +73,10 @@ const genreSlice = createSlice({
         },
         [getGenreMovies.fulfilled]: (state, action) => {
             state.genreMovies = action.payload.results;
+            state.totalCount = action.payload.total_pages;
             state.status = 'good';
-            console.log('sssssssssss',state.genreMovies);
+            console.log(state.totalCount);
+
 
         },
         [getGenreMovies.rejected]: (state, action) => {
@@ -75,5 +89,9 @@ const genreSlice = createSlice({
 
 
 const genreReducer = genreSlice.reducer;
+const {pagination} = genreSlice.actions;
 
 export default genreReducer;
+export const genreActions={pagination}
+
+

@@ -8,8 +8,7 @@ const initialState = {
     movie: null,
     status: null,
     error: null,
-    currentPage: 470,
-    perPage: 10,
+    currentPage: 1,
     totalCount: 1,
     data: null
 }
@@ -77,7 +76,7 @@ const movieSlice = createSlice({
         [getAllMovies.fulfilled]: (state, action) => {
             state.movies = action.payload.results;
             state.data = action.payload;
-            state.totalCount=action.payload.total_pages
+            state.totalCount = action.payload.total_pages
             state.status = 'resolved';
             console.log(state.data);
             console.log(state.totalCount);
@@ -92,7 +91,7 @@ const movieSlice = createSlice({
 
 
     }
-})
+});
 
 
 const movieReducer = movieSlice.reducer;

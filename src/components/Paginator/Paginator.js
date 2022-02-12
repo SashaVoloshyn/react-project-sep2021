@@ -1,32 +1,26 @@
 import React from 'react';
-import {useSearchParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
+
+import {movieActions} from "../../store";
+import css from "../Movies/Movies.module.css";
+import {createPages} from "./HelpFunk";
 
 
-const Paginator = ({data}) => {
-    let [params] = useSearchParams();
+const Paginator = ({totalCount,currentPage,Action}) => {
+    const pages = [];
+    const dispatch = useDispatch();
 
-    if (data) {
-        const pagesArr = [];
-
-        for (let i = 1; i <= 6; i++) {
-            pagesArr.push(i)
-            console.log(params);
-            console.log(pagesArr);
-        }
-
-        return (
-            <div>
-                <button to={`?page=${+params.get('page') - 1}`}>Prev</button>
-                {pagesArr.map(page => <button key={data.page} to={`?page=${data.page}`} isNav={true}>{data.page}</button>)}
-                <button to={`?page=${+params.get('page') + 1}`} >Next</button>
-            </div>
-        );
-    }
+    createPages(pages,totalCount,currentPage)
     return (
-<div>
-    <h1>sorry</h1>
-</div>
+        <div>
+            <div className={css.pages}>{pages.map((page, index) => <span className={css.page} key={index}
+                                                                         onClick={() => dispatch(Action.pagination({page}))}
+
+            >{page}</span>)}</div>
+
+        </div>
     );
 };
+
 
 export {Paginator};
