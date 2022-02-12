@@ -5,15 +5,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {MovieCard} from "../MovieCard/MovieCard";
 import {getAllMovies, movieActions} from "../../store";
 import {Paginator} from "../Paginator/Paginator";
+import css from './Movies.module.css';
 
 
 const Movies = () => {
-    const {movies, data, currentPage, totalCount} = useSelector(state => state.moviesRed);
+    const {movies,  currentPage, totalCount} = useSelector(state => state.moviesRed);
     const dispatch = useDispatch();
-    // let img = [];
-
-
-    // createPages(img,totalCount,currentPage)
 
 
     useEffect(() => {
@@ -24,7 +21,7 @@ const Movies = () => {
     }, [currentPage])
 
     return (
-        <div>
+        <div className={css.movies}>
             {movies && movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
             <Paginator currentPage={currentPage} totalCount={totalCount} Action={movieActions}/>
 

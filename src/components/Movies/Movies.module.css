@@ -1,15 +1,6 @@
-.pages {
-    margin: 20px 0;
-
-}
-
-.page {
-
-    border: 2px solid black;
-    border-radius: 100%;
-    padding: 5px 10px;
-    margin: 0 10px;
-    cursor: pointer;
-
+.movies {
+    display: flex;
+    margin-left: 40px;
+    flex-wrap: wrap;
 
 }
