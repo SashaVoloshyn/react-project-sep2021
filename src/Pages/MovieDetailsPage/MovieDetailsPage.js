@@ -19,7 +19,7 @@ const MovieDetailsPage = () => {
     if (status === 'movie-resolved') {
 
         const videos = movie.videos.results[0].key;
-        // console.log(videos);
+
         return (
             <div>
                 {movie.genres.map(ganre=><h2 key={ganre.id}>{ganre.name}</h2>)}

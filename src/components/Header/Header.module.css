@@ -1,0 +1,52 @@
+.header {
+    background-color: rgba(163, 161, 161, 0.84);
+    position: fixed;
+    width: 100%;
+
+
+}
+
+.header_wrap {
+    margin: 0 auto;
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+}
+
+.header_auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.header_nav {
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.logo {
+    transition-duration: 0.4s;
+
+}
+
+.logo:hover{
+    transform: rotate(180deg);
+}
+.nav {
+margin-left: 50px;
+    display: flex;
+    column-gap: 30px;
+}
+.nav  span:hover {
+    padding: 21px;
+    font-size: 20px;
+    background-color: #cdcdcd;
+    transition-duration: 0.8s;
+    color: #cb4141;
+}
