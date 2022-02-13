@@ -1,0 +1,40 @@
+h1 {
+    font-size: 40px;
+}
+.movies {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.moviesCont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.аnimTxt {
+    -webkit-animation: glow linear 2s infinite;
+    animation: glow linear 10s infinite;
+}
+
+
+
+@keyframes glow {
+    0% {
+        color: #000000;
+    }
+    25% {
+        color: #01086f;
+    }
+    50% {
+        color: #ffffff;
+    }
+    75% {
+        color: #ffffff;
+    }
+    100% {
+        color: #010542;
+    }
+}

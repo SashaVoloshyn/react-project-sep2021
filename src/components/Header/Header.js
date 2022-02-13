@@ -15,7 +15,7 @@ const Header = () => {
                     </div>
                     <div className={css.nav}>
                         <Link to={'/'}> <span>Movies</span></Link>
-                        <Link to={'#'}> <span>TOP-Movies</span> </Link>
+                        <Link to={'topMovies'}> <span>TOP-Movies</span> </Link>
 
                     </div>
                 </div>

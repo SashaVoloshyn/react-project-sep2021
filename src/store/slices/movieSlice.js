@@ -23,6 +23,17 @@ export const getAllMovies = createAsyncThunk(
         }
     }
 );
+export const getTopMovies = createAsyncThunk(
+    'movieSlice/getTopMovies',
+    async (currentPage, {rejectWithValue}) => {
+        try {
+            return await movieService.getTopMovie(currentPage);
+
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
 
 
 export const getMovieDetails = createAsyncThunk(
@@ -89,6 +100,13 @@ const movieSlice = createSlice({
 
         },
 
+        [getTopMovies.fulfilled]: (state, action) => {
+            state.movies = action.payload.results;
+            state.data = action.payload;
+            state.totalCount = action.payload.total_pages;
+            state.status = 'resolvedTop';
+            console.log(`top===========`,state.movies)
+        }
 
     }
 });

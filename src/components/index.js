@@ -5,3 +5,4 @@ export * from './MovieDetails/MovieDetails';
 export * from './Layout/Layout';
 export * from './Genres/Genres';
 export * from './Paginator/Paginator';
+export * from './TopMovies/TopMovies';

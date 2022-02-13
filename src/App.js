@@ -2,7 +2,7 @@ import {Route, Routes, Navigate} from "react-router-dom";
 
 import './App.css';
 import {Layout} from "./components";
-import {GenrePageMovies, MovieDetailsPage, MoviesPage} from "./Pages";
+import {GenrePageMovies, MovieDetailsPage, MoviesPage, TopMoviesPage} from "./Pages";
 
 function App() {
     return (
@@ -13,6 +13,7 @@ function App() {
 
                     <Route path={'movies'} element={<MoviesPage/>}/>
                     <Route path={'movies/:movieId/:name'} element={<MovieDetailsPage/>}/>
+                    <Route path={'topMovies'} element={<TopMoviesPage/>}/>
 
                     <Route path={'genres=:genreId/:name'} element={<GenrePageMovies/>}/>
 
