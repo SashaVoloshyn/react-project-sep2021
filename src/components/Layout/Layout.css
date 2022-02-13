@@ -6,7 +6,25 @@
     padding: 15px;
     background-color: rgba(193, 192, 192, 0.91);
 
+
 }
+
+
+
+@media (prefers-color-scheme: dark) {
+    .dark-theme img {
+        filter: invert(1);
+    }
+    .dark-theme.wraper{
+        filter: invert(1);
+    }
+    .dark-theme iframe {
+        filter: invert(1);
+    }
+
+}
+
+
 .layout {
     background-image: url('/public/img/fon2.jpg');
     background-repeat: no-repeat;
@@ -14,4 +32,7 @@
     background-color: rgb(3, 3, 3);
 
 }
+
+
+
 

@@ -1,9 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Switch from '@mui/material/Switch';
 
 import css from './Header.module.css';
 
-const Header = () => {
+const Header = ({checked,handleChange}) => {
+
+
     return (
         <div className={css.header}>
             <div className={css.header_wrap}>
@@ -21,6 +24,11 @@ const Header = () => {
                 </div>
 
                 <div className={css.header_auth}>
+                    <Switch
+                        checked={checked}
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                    />
                     <img src="https://img.icons8.com/color/40/000000/my-melody.png" alt='user'/>
                     <span>User</span>
 

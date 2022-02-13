@@ -1,15 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Outlet} from "react-router-dom";
 
+import "./Layout.css";
+
 import {Header} from "../Header/Header";
-import css from './Layout.module.css';
 
 const Layout = () => {
+    const [checked, setChecked] = useState(true);
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked);
+    };
+    console.log(checked)
+
     return (
-        <div className={css.layout}>
+        <div className='layout'>
             <hr/>
-            <Header/>
-            <div className={css.wraper}>
+            <Header checked={checked} handleChange={handleChange}/>
+            <div className={checked?'wraper dark-theme':'wraper'}>
                 <Outlet/>
             </div>
         </div>
