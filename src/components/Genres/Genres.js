@@ -11,9 +11,11 @@ const Genres = () => {
     const {genres} = useSelector(state => state.genresRed);
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-        dispatch(getAllGenres())
-    },[])
+    useEffect(() => {
+
+        dispatch(getAllGenres());
+
+        }, []);
 
     return (
         <div className={css.genres}>

@@ -8,8 +8,10 @@ const TopMoviesPage = () => {
         <div className={css.movies}>
             <h1 className={css.аnimTxt}>Top Movies</h1>
             <div className={css.moviesCont}>
+
                 <Genres/>
                 <TopMovies/>
+
             </div>
         </div>
     );

@@ -7,20 +7,16 @@ import {Loading, MovieCard, Paginator} from "../../components";
 import css from './GenreMovies.module.css'
 
 const GenreMovies = () => {
+
     const {genreMovies,status,currentPage, totalCount} = useSelector(state => state.genresRed);
     const {genreId} = useParams();
-    console.log(`genre id`,genreId)
     const dispatch = useDispatch();
-
-
 
     useEffect(() => {
 
-
-
         dispatch(getGenreMovies({genreId,currentPage}));
-    }, [currentPage,genreId]);
-    console.log(status);
+
+        }, [currentPage,genreId]);
 
 
     if (status==='good') {

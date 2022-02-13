@@ -2,8 +2,6 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import {genreService} from "../../services/genre.service";
 
-
-
 const initialState = {
     genreMovies:[],
     genres: [],
@@ -12,6 +10,7 @@ const initialState = {
     currentPage:1,
     totalCount: 1,
 };
+
 export const getAllGenres = createAsyncThunk(
     'genreSlice/getAllGenres',
     async (_, { rejectWithValue}) => {
@@ -43,12 +42,12 @@ const genreSlice = createSlice({
     initialState,
     reducers:{
         pagination: (state, action) => {
-            state.currentPage = action.payload.page;
-            console.log(state.currentPage);
-            console.log(action.payload);
-        }
 
+            state.currentPage = action.payload.page;
+
+        }
     },
+
     extraReducers:{
         [getAllGenres.pending]: (state) => {
             state.status = 'loading';
@@ -76,9 +75,6 @@ const genreSlice = createSlice({
             state.genreMovies = action.payload.results;
             state.totalCount = action.payload.total_pages;
             state.status = 'good';
-            console.log(state.totalCount);
-            console.log(action.payload);
-
 
         },
         [getGenreMovies.rejected]: (state, action) => {

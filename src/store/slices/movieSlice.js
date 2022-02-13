@@ -2,7 +2,6 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 import {movieService} from "../../services/movie.service";
 
-
 const initialState = {
     movies: [],
     movie: null,
@@ -11,7 +10,9 @@ const initialState = {
     currentPage: 1,
     totalCount: 1,
     data: null
-}
+};
+
+
 export const getAllMovies = createAsyncThunk(
     'movieSlice/getAllMovies',
     async (currentPage, {rejectWithValue}) => {
@@ -23,6 +24,8 @@ export const getAllMovies = createAsyncThunk(
         }
     }
 );
+
+
 export const getTopMovies = createAsyncThunk(
     'movieSlice/getTopMovies',
     async (currentPage, {rejectWithValue}) => {
@@ -55,8 +58,6 @@ const movieSlice = createSlice({
     reducers: {
         pagination: (state, action) => {
             state.currentPage = action.payload.page;
-            console.log(state.currentPage);
-            console.log(action.payload);
 
         }
     },
@@ -89,9 +90,6 @@ const movieSlice = createSlice({
             state.data = action.payload;
             state.totalCount = action.payload.total_pages
             state.status = 'resolved';
-            console.log(state.data);
-            console.log(state.totalCount);
-
 
         },
         [getAllMovies.rejected]: (state, action) => {
@@ -100,12 +98,12 @@ const movieSlice = createSlice({
 
         },
 
+
         [getTopMovies.fulfilled]: (state, action) => {
             state.movies = action.payload.results;
             state.data = action.payload;
             state.totalCount = action.payload.total_pages;
             state.status = 'resolvedTop';
-            console.log(`top===========`,state.movies)
         }
 
     }
@@ -113,10 +111,7 @@ const movieSlice = createSlice({
 
 
 const movieReducer = movieSlice.reducer;
-
 const {pagination} = movieSlice.actions;
-
-
 
 export default movieReducer;
 export const movieActions = {pagination}

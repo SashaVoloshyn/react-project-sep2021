@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import Rating from "@mui/material/Rating";
 import {useParams} from "react-router";
 
 import {getMovieDetails} from "../../store";
 import css from './MovieDetailsPage.module.css';
-import Rating from "@mui/material/Rating";
 
 
 const MovieDetailsPage = () => {
@@ -17,15 +17,13 @@ const MovieDetailsPage = () => {
         dispatch(getMovieDetails(movieId));
 
     }, []);
-    console.log(status);
-    console.log(movie)
 
     if (status === 'movie-resolved') {
 
         const videos = movie.videos.results;
-        const companies = movie.production_companies
-        const languages = movie.spoken_languages
-        const countries = movie.production_countries
+        const companies = movie.production_companies;
+        const languages = movie.spoken_languages;
+        const countries = movie.production_countries;
 
         return (
             <div>
