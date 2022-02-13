@@ -43,8 +43,11 @@
 .info {
     display: flex;
     flex-direction: column;
-    row-gap: 18px;
+    row-gap: 16px;
     font-size: 20px;
+}
+.time span {
+margin-left: 18px;
 }
 
 .genres {

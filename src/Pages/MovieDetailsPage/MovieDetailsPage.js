@@ -42,6 +42,8 @@ const MovieDetailsPage = () => {
 
                         <div className={css.relise}><strong>Relise :</strong> <span>{movie.release_date}</span></div>
 
+                        <div className={css.time}><strong>Run Time :</strong> <span>{movie.runtime} mins</span></div>
+
                         <div className={css.status}><strong>Status :</strong> <span>{movie.status}</span></div>
 
                         <div className={css.homepage}><strong>Homepage :</strong> <span>{movie.homepage}</span></div>
