@@ -1,0 +1,117 @@
+.loading {
+    width: 100px;
+    height: 100px;
+    border: 4px dotted darkblue;
+    border-radius: 100%;
+    margin: 150px auto;
+    animation-name: load;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+}
+
+@keyframes load {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg) scale(1.4);
+    }
+
+}
+
+.title {
+    width: 100%;
+    background-color: rgba(64, 64, 64, 0.95);
+    color: #dcdbdb;
+    border-radius: 15px;
+}
+.title h2 {
+    padding-left: 10px;
+    font-size: 40px;
+}
+.infoBlock {
+    display: flex;
+    column-gap: 40px;
+    margin-top: 20px;
+}
+
+.logo img {
+    width: 80px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+    font-size: 20px;
+}
+
+.genres {
+    margin-left: 40px;
+}
+.tagline  span{
+    margin-left: 40px;
+}
+.relise span {
+    margin-left: 50px;
+}
+.status span {
+    margin-left: 50px;
+}
+.homepage span{
+    margin-left: 12px;
+}
+.languages span {
+    margin-left: 12px;
+}
+.budget span {
+    margin-left: 50px;
+}
+.revenue span {
+    margin-left: 38px;
+}
+.companies span {
+    margin-left: 20px;
+}
+.countries span {
+    margin-left: 20px;
+}
+.rating span {
+    width: 40%;
+
+
+}
+.overview span {
+    margin-left: 30px;
+    font-size: 22px;
+}
+.videos {
+    margin-top: 50px;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.videoCard {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.movie_h2 h2 {
+    font-size: 30px;
+    margin: 0 auto;
+
+}
+.movie_h2 {
+    width: 100%;
+    background-color: rgba(64, 64, 64, 0.95);
+    color: #dcdbdb;
+    border-radius: 15px;
+display: flex;
+    justify-content: center;
+    align-items: center;
+}

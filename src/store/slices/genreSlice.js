@@ -3,12 +3,13 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {genreService} from "../../services/genre.service";
 
 
+
 const initialState = {
     genreMovies:[],
     genres: [],
     status: null,
     error: null,
-    currentPage: 1,
+    currentPage:1,
     totalCount: 1,
 };
 export const getAllGenres = createAsyncThunk(

@@ -3,11 +3,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 
 import {getMovieDetails} from "../../store";
+import css from './MovieDetailsPage.module.css';
+import Rating from "@mui/material/Rating";
+
 
 const MovieDetailsPage = () => {
     const {movieId} = useParams();
     const dispatch = useDispatch();
-    const {status,movie} = useSelector(state => state.moviesRed);
+    const {status, movie} = useSelector(state => state.moviesRed);
 
     useEffect(() => {
 
@@ -15,56 +18,91 @@ const MovieDetailsPage = () => {
 
     }, []);
     console.log(status);
+    console.log(movie)
 
     if (status === 'movie-resolved') {
 
-        const videos = movie.videos.results[0].key;
+        const videos = movie.videos.results;
+        const companies = movie.production_companies
+        const languages = movie.spoken_languages
+        const countries = movie.production_countries
 
         return (
             <div>
-                {movie.genres.map(ganre=><h2 key={ganre.id}>{ganre.name}</h2>)}
-                <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title}/>
-                <iframe width="800" height="600"
-                            src={`https://www.youtube.com/embed/${videos}`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen>
-                </iframe>
+                <div className={css.title}><h2>{movie.original_title}</h2></div>
+                <div className={css.infoBlock}>
+                    <div className={css.poster}>
+                        <img src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`} alt={movie.title}/>
+                    </div>
+                    <div className={css.info}>
+                        <div className={css.genre}><strong>Genres :</strong> {movie.genres && movie.genres.map(ganre => <span
+                            className={css.genres} key={ganre.id}>{ganre.name}</span>)} </div>
+
+                        {<div className={css.tagline}><strong>Tagline :</strong> <span>{movie.tagline}</span></div>}
+
+                        <div className={css.relise}><strong>Relise :</strong> <span>{movie.release_date}</span></div>
+
+                        <div className={css.status}><strong>Status :</strong> <span>{movie.status}</span></div>
+
+                        <div className={css.homepage}><strong>Homepage :</strong> <span>{movie.homepage}</span></div>
+
+                        <div className={css.languages}><strong>Languages :</strong> {languages &&languages.map((language, index) =>
+                            <span
+                                key={index}>{language.name}</span>)}</div>
+
+                        <div className={css.countries}><strong>Countries :</strong> {countries &&countries.map((countri, index) =>
+                            <span
+                                key={index}>{countri.name}</span>)}</div>
+
+                        <div className={css.companies}><strong>Companies :</strong> {companies &&companies.map(companie => <span
+                            className={css.logo} key={companie.id}> {companie.logo_path &&<img
+                            src={`https://image.tmdb.org/t/p/original/${companie.logo_path}`}
+                            alt={companie.name}/>}</span>)}</div>
+
+                        <div className={css.budget}><strong>Budget :</strong> <span>{movie.budget}</span></div>
+
+                        <div className={css.revenue}><strong>Revenue :</strong> <span>{movie.revenue}</span></div>
+
+                        <div className={css.rating}><strong>Rating : </strong> <span><Rating name="read-only"
+                                                                                             defaultValue={movie.vote_average}
+                                                                                             precision={0.5} max={10}
+                                                                                             readOnly/></span></div>
+
+                        <div className={css.overview}><strong>Overview :</strong> <span>{movie.overview}</span></div>
+                    </div>
+                </div>
+
+                    <div className={css.videoCard}>
+                        <div className={css.movie_h2}><h2>Movies</h2></div>
+
+                        <div className={css.videos}>{videos.map((video, index) => <div key={index}>
+                            <iframe width="400" height="300"
+                                    src={`https://www.youtube.com/embed/${video.key}`}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen>
+                            </iframe>
+                        </div>)}</div>
+
+                    </div>
+                <div>
+
+                    {/*<iframe width="400" height="300"*/}
+                    {/*        src={`https://www.youtube.com/embed/${videos}`}*/}
+                    {/*        frameBorder="0"*/}
+                    {/*        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"*/}
+                    {/*        allowFullScreen>*/}
+                    {/*</iframe>*/}
+
+                </div>
             </div>
         );
-
-        // adult: false
-        // backdrop_path: "/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"
-        // belongs_to_collection: {id: 531241, name: "Spider-Man (Avengers) Collection", poster_path: "/nogV4th2P5QWYvQIMiWHj4CFLU9.jpg",…}
-        // budget: 200000000
-        // genres: [{id: 28, name: "Action"}, {id: 12, name: "Adventure"}, {id: 878, name: "Science Fiction"}]
-        // homepage: "https://www.spidermannowayhome.movie"
-        // id: 634649
-        // images: {backdrops: [,…], logos: [,…], posters: [,…]}
-        // imdb_id: "tt10872600"
-        // original_language: "en"
-        // original_title: "Spider-Man: No Way Home"
-        // overview: "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
-        // popularity: 12335.96
-        // poster_path: "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
-        // production_companies: [,…]
-        // production_countries: [{iso_3166_1: "US", name: "United States of America"}]
-        // release_date: "2021-12-15"
-        // revenue: 1775000000
-        // runtime: 148
-        // spoken_languages: [{english_name: "English", iso_639_1: "en", name: "English"},…]
-        // status: "Released"
-        // tagline: "The Multiverse unleashed."
-        // title: "Spider-Man: No Way Home"
-        // video: false
-        // videos: {results: [,…]}
-        // vote_average: 8.4
-        // vote_count: 7372
     }
 
+
     return (
-        <div>
-            <h1>wtf</h1>
+        <div className={css.loading}>
+
         </div>
     );
 };

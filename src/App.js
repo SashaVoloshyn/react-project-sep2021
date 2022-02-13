@@ -13,6 +13,7 @@ function App() {
 
                     <Route path={'movies'} element={<MoviesPage/>}/>
                     <Route path={'movies/:movieId/:name'} element={<MovieDetailsPage/>}/>
+
                     <Route path={'genres=:genreId/:name'} element={<GenrePageMovies/>}/>
 
 
