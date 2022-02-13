@@ -13,10 +13,10 @@ const Paginator = ({totalCount, currentPage, Action}) => {
     return (
         <div>
             <div className={css.pages}>{pages.map((page, index) =>
-                <span className={css.page} key={index}
+                <button className={css.page} key={index}
                       onClick={() => dispatch(Action.pagination({page}))}
 
-            >{page}</span>)}</div>
+            >{page}</button>)}</div>
 
         </div>
     );

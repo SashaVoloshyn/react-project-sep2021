@@ -7,7 +7,6 @@ import css from './MovieCard.module.css';
 
 
 const MovieCard = ({movie}) => {
-    console.log(movie)
 
     return (
         <div className={css.movieCard}>
@@ -22,7 +21,9 @@ const MovieCard = ({movie}) => {
                 </div>
                 <div className={css.title}>
 
-                    <h3>{movie.original_title}</h3>
+                    <h3>
+                        {movie.original_title}
+                    </h3>
 
                 </div>
 

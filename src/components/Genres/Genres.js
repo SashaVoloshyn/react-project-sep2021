@@ -17,7 +17,7 @@ const Genres = () => {
 
     return (
         <div className={css.genres}>
-            {genres && genres.map(genre => <div key={genre.id}><Link to={`/genres=${genre.id}/${genre.name}`}>{genre.name}</Link><hr/></div>)}
+            {genres && genres.map(genre => <Link to={`/genres=${genre.id}/${genre.name}`}><div key={genre.id}>{genre.name}<hr/></div></Link>)}
         </div>
     );
 };

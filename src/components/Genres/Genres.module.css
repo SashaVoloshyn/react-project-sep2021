@@ -1,4 +1,5 @@
 .genres {
+    margin-top: 50px;
     background-color: rgba(64, 64, 64, 0.95);
     height: fit-content;
     min-width: 15%;
@@ -9,7 +10,7 @@
     font-size: 24px;
     row-gap: 10px;
     position: sticky;
-    top: 90px;
+    top: 120px;
 
 
 }
