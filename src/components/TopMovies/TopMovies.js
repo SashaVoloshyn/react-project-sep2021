@@ -6,11 +6,12 @@ import {MovieCard} from "../MovieCard/MovieCard";
 import { getTopMovies, movieActions} from "../../store";
 import {Paginator} from "../Paginator/Paginator";
 import css from './TopMovie.module.css';
+import {Loading} from "../Loading/Loading";
 
 
 
 const TopMovies = () => {
-    const {movies,  currentPage, totalCount} = useSelector(state => state.moviesRed);
+    const {movies,  currentPage, totalCount,status} = useSelector(state => state.moviesRed);
     const dispatch = useDispatch();
 
 
@@ -22,12 +23,19 @@ const TopMovies = () => {
     }, [currentPage]);
 
 
+    if (status==='resolvedTop') {
+        return (
+            <div className={css.movies}>
+                {movies && movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
+                <Paginator currentPage={currentPage} totalCount={totalCount} Action={movieActions}/>
 
+            </div>
+
+        );
+    }
     return (
-        <div className={css.movies}>
-            {movies && movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
-            <Paginator currentPage={currentPage} totalCount={totalCount} Action={movieActions}/>
-
+        <div>
+            <Loading/>
         </div>
 
     );

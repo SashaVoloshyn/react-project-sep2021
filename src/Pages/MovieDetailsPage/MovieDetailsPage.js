@@ -85,16 +85,6 @@ const MovieDetailsPage = () => {
                         </div>)}</div>
 
                     </div>
-                <div>
-
-                    {/*<iframe width="400" height="300"*/}
-                    {/*        src={`https://www.youtube.com/embed/${videos}`}*/}
-                    {/*        frameBorder="0"*/}
-                    {/*        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"*/}
-                    {/*        allowFullScreen>*/}
-                    {/*</iframe>*/}
-
-                </div>
             </div>
         );
     }

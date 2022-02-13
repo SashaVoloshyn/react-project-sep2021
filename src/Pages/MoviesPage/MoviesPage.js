@@ -4,6 +4,7 @@ import css from './Movies.module.css';
 import {Genres, Movies} from "../../components";
 
 const MoviesPage = () => {
+
     return (
         <div className={css.movies}>
             <h1 className={css.аnimTxt}>Movies</h1>
