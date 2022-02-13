@@ -11,7 +11,6 @@ const Layout = () => {
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
-    console.log(checked)
 
     return (
         <div className='layout'>
